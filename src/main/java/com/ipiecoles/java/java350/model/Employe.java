@@ -60,7 +60,7 @@ public class Employe {
     }
 
     public Integer getNbRtt(LocalDate d){
-        // Correction : Remplacement de 'var' par 'nbRttJours' pour éviter l'identificateur restreint
+        // Correction 1: Remplacement de 'var' par 'nbRttJours' pour éviter l'identificateur restreint
         int i1 = d.isLeapYear() ? 365 : 366;
         int nbRttJours = 104;
         
@@ -71,6 +71,9 @@ public class Employe {
         else nbRttJours = nbRttJours + 1;
         case SATURDAY:nbRttJours = nbRttJours + 1;
                          break;
+        // Correction 2: Ajout du 'default' pour gérer tous les cas DayOfWeek non listés
+        default:
+            break;
         }
         
         int monInt = (int) Entreprise.joursFeries(d).stream().filter(localDate ->
